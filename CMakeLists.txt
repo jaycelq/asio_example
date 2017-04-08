@@ -12,12 +12,12 @@ IF(Boost_FOUND)
      LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
 ENDIF(Boost_FOUND)
 
-set(SOURCE_FILES
-        async_timer.cpp
-        sync_timer.cpp)
-
 set(USED_LIBS ${Boost_SYSTEM_LIBRARY} ${Boost_THREAD_LIBRARY} ${Boost_REGEX_LIBRARY} ${Boost_CONTEXT_LIBRARY})
 add_executable(sync_timer sync_timer.cpp)
 target_link_libraries(sync_timer ${USED_LIBS})
 add_executable(async_timer async_timer.cpp)
 target_link_libraries(async_timer ${USED_LIBS})
+add_executable(async_arg_timer async_arg_timer.cpp)
+target_link_libraries(async_arg_timer ${USED_LIBS})
+add_executable(async_class_timer async_class_timer.cpp)
+target_link_libraries(async_class_timer ${USED_LIBS})
