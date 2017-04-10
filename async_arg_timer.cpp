@@ -25,7 +25,7 @@ int main()
     boost::asio::deadline_timer timer(io, boost::posix_time::seconds(1));
 
     int count = 0;
-    timer.async_wait(boost::bind(print, boost::asio::placeholders::error, count, std::ref(timer)));
+    timer.async_wait(boost::bind(print, _1, count, std::ref(timer)));
 
     io.run();
 

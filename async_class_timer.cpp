@@ -19,7 +19,7 @@ public:
         std::cout << "Finish Print: tick " << count_;
     }
 
-    void print()
+    void print(const boost::system::error_code &ec)
     {
         if (count_ < 5)
         {
