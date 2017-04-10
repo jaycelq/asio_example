@@ -12,7 +12,7 @@ class printer
 public:
     printer(boost::asio::io_service &io) : timer_(io, boost::posix_time::seconds(1)), count_(0)
     {
-        timer_.async_wait(boost::bind(&printer::print, this));
+        timer_.async_wait(boost::bind(&printer::print, this, _1));
     }
     ~printer()
     {
@@ -26,7 +26,7 @@ public:
             count_++;
             std::cout << "Tick " << count_ << std::endl;
             timer_.expires_from_now(boost::posix_time::seconds(1));
-            timer_.async_wait(boost::bind(&printer::print, this));
+            timer_.async_wait(boost::bind(&printer::print, this, boost::asio::placeholders::error));
         }
     }
 private:
